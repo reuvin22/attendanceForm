@@ -44,7 +44,7 @@ class AppServiceProvider extends ServiceProvider
 
         Response::macro('deleted', function(){
             return response()->json([
-                'status' => 400,
+                'status' => 200,
                 'message' => 'Data Deleted Successfully'
             ], 400);
         });

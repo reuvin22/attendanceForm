@@ -15,6 +15,7 @@ class AttendanceResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
+            'date' => $this->created_at,
             'firstName' => $this->firstName,
             'lastName' => $this->lastName,
             'gender' => $this->gender,

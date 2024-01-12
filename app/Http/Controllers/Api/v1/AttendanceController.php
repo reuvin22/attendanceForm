@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AttendanceRequest;
 use App\Http\Resources\AttendanceResource;
+use Carbon\Carbon;
 
 class AttendanceController extends Controller
 {
@@ -24,6 +25,7 @@ class AttendanceController extends Controller
         return response()->json([
             'status' => 200,
             'data' => [
+                'data' => now(),
                 'Male' => $allGender->get('Male', 0),
                 'Female' => $allGender->get('Female', 0),
                 'Grade 1' => $allGrades->get(1, 0),
