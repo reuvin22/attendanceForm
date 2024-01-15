@@ -99,4 +99,14 @@ class AttendanceController extends Controller
             return response()->deleted();
         }
     }
+
+    public function reset()
+    {
+        $attendance = Attendance::truncate();
+        if($attendance){
+            return response()->deleted('Data Deleted Successfully');
+        }else {
+            return response()->error('Data Failed to Delete');
+        }
+    }
 }

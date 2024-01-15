@@ -25,5 +25,5 @@ Route::apiResource('/attendance', AttendanceController::class);
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/admin', [RegisterController::class, 'store']);
 Route::middleware('auth:sanctum')->group(function(){
-
+    Route::delete('/reset', [AttendanceController::class, 'reset']);
 });
