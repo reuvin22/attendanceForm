@@ -17,24 +17,22 @@ class AttendanceController extends Controller
      */
     public function index()
     {
-        $grades = [1, 2, 3];
-        $attendance = Attendance::whereIn('grade', $grades)->get();
-        $allGrades = $attendance->countBy('grade');
-        $allGender = $attendance->countBy('gender');
-
+        $grade = [1,2,3];
+        $attendance = Attendance::all();
+        $gender = $attendance->countBy('gender');
+        $gradeResult = $attendance->countBy('grade');
         return response()->json([
-            'status' => 200,
-            'data' => [
-                'data' => now(),
-                'Male' => $allGender->get('Male', 0),
-                'Female' => $allGender->get('Female', 0),
-                'Grade 1' => $allGrades->get(1, 0),
-                'Grade 2' => $allGrades->get(2, 0),
-                'Grade 3' => $allGrades->get(3, 0)
+            "status" => 200,
+            "data" => [
+                'Male' => $gender->get('Male'),
+                'Female' => $gender->get('Female'),
+                'Grade 3' => $gradeResult->get('3'),
+                'Grade 4' => $gradeResult->get('4'),
+                'Grade 5' => $gradeResult->get('5')
             ]
-        ]);
-
+        ], 200);
     }
+
 
     /**
      * Store a newly created resource in storage.

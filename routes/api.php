@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\v1\AttendanceController;
+use App\Http\Controllers\Api\v1\LoginController;
+use App\Http\Controllers\Api\v1\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +22,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('/attendance', AttendanceController::class);
+Route::post('/login', [LoginController::class, 'login']);
+Route::post('/admin', [RegisterController::class, 'store']);
+Route::middleware('auth:sanctum')->group(function(){
+
+});
